@@ -3,13 +3,13 @@ const bcrypt = require('bcrypt')
 const axios = require('axios')
 
 
-const registerUser = async () => {
+const registerUser = async (req, res) => {
     const { name, username, password } = req.body
     
     if (!name || !username || !password) {
         return res.status(204).json({ 'message': 'Please enter your name, username and password' })
     }
-    const user = await newUser.find({ username }).exec()
+    const user = await newUser.findOne({ username }).exec()
     if (user) {
         return res.status(409).json({ 'message': 'User already exists, please try another name' })
     }

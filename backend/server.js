@@ -2,14 +2,19 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const dotenv = require('dotenv')
-const ConnectDB = require('./models/DBConnect.js')
-
-ConnectDB()
-
-app.use(cors())
+const ConnectDB = require('./models/DBConnect')
 dotenv.config({ path: './config/.env' })
 
+
+ConnectDB();
+
+
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
+
 app.use('/register', require('./routes/register'))
+app.use('/users', require('./routes/users'))
 
 
 app.listen(process.env.PORT, () => {
