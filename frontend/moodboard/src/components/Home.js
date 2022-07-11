@@ -25,8 +25,12 @@ const Home = () => {
               username: username,
               email: email,
               password: password
-          }).then();
-          console.log(details);
+            }).then();
+            console.log(details);
+          setName('')
+          setUsername('')
+          setEmail('')
+          setPassword('')
           
       } catch (error) {
           console.log(error);

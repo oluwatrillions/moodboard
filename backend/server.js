@@ -14,6 +14,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 app.use('/register', require('./routes/register'))
+app.use('/login', require('./routes/login'))
 app.use('/users', require('./routes/users'))
 
 
