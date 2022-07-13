@@ -7,7 +7,7 @@ const loginController = async (req, res) => {
     }
     try {
         
-        const user = await Users.find({ username, password })
+        const user = await Users.findOne({ username: username, password: password }).exec()
         if (user) {
             return res.status(200).json({'success': 'You are logged in'})
         }

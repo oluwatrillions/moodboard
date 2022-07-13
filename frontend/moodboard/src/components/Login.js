@@ -1,8 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useContext } from 'react'
 import './Login.css'
 import axios from 'axios'
+import AuthContext from '../context/LoginProvider'
 
 const Login = () => {
+
+    const {setLogin} = useContext(AuthContext)
 
     const errRef = useRef()
 
@@ -18,11 +21,16 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const loginBtn = await axios.get("http://localhost:4000/login", {
-                username: username,
-                password: password
-            }).then();
+            const loginBtn = await axios.get("http://localhost:4000/login",
+                JSON.stringify({ username, password }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+               
+            );
             console.log(loginBtn);
+            setLogin({username, password})
             setUsername('')
             setPassword('')
         } catch (error) {
