@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect, useContext } from 'react'
 import './Login.css'
 import axios from 'axios'
-import AuthContext from '../context/LoginProvider'
+import LoginContext from '../context/LoginProvider'
 
 const Login = () => {
 
-    const {setLogin} = useContext(AuthContext)
+    const {setLogin} = useContext(LoginContext)
 
     const errRef = useRef()
 
@@ -21,7 +21,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const loginBtn = await axios.get("http://localhost:4000/login",
+            const loginBtn = await axios.post("http://localhost:4000/auth",
                 JSON.stringify({ username, password }),
                 {
                     headers: { 'Content-Type': 'application/json' },
