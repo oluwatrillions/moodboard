@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 
 
 
-const loginController = async (req, res) => {
+const verifyLogin = async (req, res) => {
     const { user, pwrd } = req.body
     
     if (!user || !pwrd) {
@@ -18,14 +18,15 @@ const loginController = async (req, res) => {
         const passwordMatch = await bcrypt.compare(pwrd, foundUser.password)
         if (passwordMatch) {
             const accessToken = await jwt.sign(
-                { 'username': foundUser.username },
-                process.env.ACCESS_TOKEN,
+                { 'user': foundUser.username },
+                process.env.ACCESS_TOKEN_SECRET,
                 { expiresIn: '30s' }
             );
+            console.log(accessToken)
 
             const refreshToken = jwt.sign(
-                { 'username': foundUser.username },
-                process.env.REFRESH_TOKEN,
+                { 'user': foundUser.username },
+                process.env.REFRESH_TOKEN_SECRET,
                 { expiresIn: '30s' }
             );
 
@@ -33,12 +34,12 @@ const loginController = async (req, res) => {
             const result = await foundUser.save()
             console.log(result);
 
+            res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
             res.json({ accessToken });
-            res.cookie('jwt', refreshToken, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
         } else {
             res.sendStatus(401);
         };
     }
 }
 
-    module.exports = { loginController };
+    module.exports = { verifyLogin };
