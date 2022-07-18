@@ -40,19 +40,37 @@ input {
 }
 
 button {
-    margin-top: 2vh;
-    width: 10em;
+    width: 8em !important;
     height: 3em;
     border-radius: .7em;
     border: none;
     outline: none;
-    margin-left: 5em;
+    cursor: pointer;
 }
 
 .errMsg {
     color: red;
+    font-weight: 400;
 }
 
 .noErrMsg {
     display: none;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    margin-left: 5em;
+}
+
+.btn-group h4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
 }

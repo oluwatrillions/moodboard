@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import {Link} from 'react-router-dom'
 import './Home.css'
 import axios from 'axios'
 
@@ -67,7 +68,10 @@ const Home = () => {
                         <input type="password" name='password' value={password} onChange={ ((e)=> setPassword(e.target.value))}/>
                     </main>
                 </form>
-                <button onClick={signupBtn}>SIGN UP</button>
+                <div className='btn-group'>
+                    <button onClick={signupBtn}>SIGN UP</button>
+                    <h4>Have an account? <span> <Link to='/login'>SIGN IN</Link></span></h4>
+                </div>
         </section>
     </div>
   )

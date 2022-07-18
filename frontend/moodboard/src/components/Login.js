@@ -27,10 +27,8 @@ const Login = () => {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 }
-               
             );
             console.log(loginBtn);
-            console.log(loginBtn.data);
             setLogin({username, password})
             setUsername('')
             setPassword('')
