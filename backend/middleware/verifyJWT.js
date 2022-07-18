@@ -2,8 +2,9 @@ const jwt = require('jsonwebtoken')
 
 const verifyJWT = (req, res, next) => {
     const authHeader = req.headers.authorization || req.headers.Authorization
-    if (!authHeader || !authHeader?.startswith('Bearer'))
-        return res.sendStatus(401);        
+    // if (!authHeader?.startswith('Bearer')) {
+    //     return res.sendStatus(401)
+    // };        
     const token = authHeader.split(' ')[1]
     console.log(token);
 
@@ -19,4 +20,4 @@ const verifyJWT = (req, res, next) => {
     )
 }
 
-module.exports = verifyJWT
+module.exports = verifyJWT;

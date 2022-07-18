@@ -8,7 +8,8 @@ const verifyLogin = async (req, res) => {
     const { user, pwrd } = req.body
     
     if (!user || !pwrd) {
-        res.status(400).json({ 'message': 'Please enter a user and password' })
+       return res.status(400).json({ 'message': 'Please enter a user and password' })
+    }
         
         const foundUser = await Users.findOne({ username: user }).exec()
         
@@ -35,11 +36,10 @@ const verifyLogin = async (req, res) => {
             console.log(result);
 
             res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
-            res.json({ accessToken });
+            res.json(accessToken);
         } else {
             res.sendStatus(401);
         };
-    }
 }
 
     module.exports = { verifyLogin };

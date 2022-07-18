@@ -22,7 +22,7 @@ const Login = () => {
         e.preventDefault();
         try {
             const loginBtn = await axios.post("http://localhost:4000/auth",
-                JSON.stringify({ username, password }),
+                JSON.stringify({ user: username, pwrd: password }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -30,13 +30,14 @@ const Login = () => {
                
             );
             console.log(loginBtn);
+            console.log(loginBtn.data);
             setLogin({username, password})
             setUsername('')
             setPassword('')
         } catch (error) {
             console.log(error.response);
             if (error.response.status === 401) {
-                setErrMsg('Unauthorized')
+                setErrMsg('Unauthorized: Please enter a valid username and password.')
             } else if (error.response.status === 404) {
                 setErrMsg('User not found')
             } else if (error.response.status === 400) {
