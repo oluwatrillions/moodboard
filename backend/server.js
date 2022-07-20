@@ -21,12 +21,11 @@ app.use(cors(corsOptions))
 
 app.use('/register', require('./routes/register'))
 app.use('/auth', require('./routes/auth'))
+app.use('/posts', require('./routes/posts/posts'))
+app.use('/post', require('./routes/posts/post'))
 
 app.use(verifyJWT)
-
 app.use('/users', require('./routes/users'))
-
-// app.use('/login', require('./routes/login'))
 
 
 app.listen(process.env.PORT, () => {
