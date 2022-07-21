@@ -1,10 +1,9 @@
 const Post = require('../../models/posts/posts')
 const moment = require('moment')
 
-const getPost = async (req, res, next) => {
+const getPost = async (req, res) => {
     const posts = await Post.find()
-    res.json(posts)
-    next();
+    res.json(posts);
 }
 
 const createPost = async (req, res) => {
@@ -25,16 +24,14 @@ const createPost = async (req, res) => {
     } catch (error) {
         console.log(error.message);
     }
-    next();
 }
 
 const updatePost = async (req, res) => {
-    const { id } = req.params.id
-    if (!id) {
+    if (!req.params.id) {
         return res.status(400).json({message: 'Please enter an id'})
     }
 
-    const updatePost = await Post.findOne({ _id: id }).exec()
+    const updatePost = await Post.findOne({ _id: req.params.id }).exec()
 
     if (!updatePost) {
         return res.status(404).json({message: 'The id does not exist'})
@@ -46,16 +43,14 @@ const updatePost = async (req, res) => {
         updatePost.createdAt = req.body.createdAt 
     const editedPost = await updatePost.save()
 
-    res.json(editedPost)
-    next();
+    res.json(editedPost);
 }
 
 const deletePost = async (req, res) => {
-    const { id } = req.params.id
-    if (!id) {
+    if (!req.params.id) {
          return res.status(400).json({message: 'Please enter an id'})
     }
-    const post = await Post.findOne({ _id: id }).exec()
+    const post = await Post.findOne({ _id: req.params.id }).exec()
     if (!post) {
         return res.status(404).json({message: 'The id does not exist'})
     }
@@ -64,11 +59,10 @@ const deletePost = async (req, res) => {
 }
 
 const getOnePost = async (req, res) => {
-    const { id } = req.params.id
-    if (!id) {
+    if (!req.params.id) {
          return res.status(400).json({message: 'Please enter an id'})
     }
-    const post = await Post.findOne({ _id: id }).exec()
+    const post = await Post.findOne({ _id: req.params.id }).exec()
     if (!post) {
         return res.status(404).json({message: 'The id does not exist'})
     }
