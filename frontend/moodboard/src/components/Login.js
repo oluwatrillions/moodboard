@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect, useContext } from 'react'
+import {useNavigate} from 'react-router-dom'
 import './Login.css'
 import axios from 'axios'
 import LoginContext from '../context/LoginProvider'
 
 const Login = () => {
 
+    const navigate = useNavigate()
     const {setLogin} = useContext(LoginContext)
 
     const errRef = useRef()
@@ -21,28 +23,27 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const loginBtn = await axios.post("http://localhost:4000/auth",
-                JSON.stringify({ user: username, pwrd: password }),
-                {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
-                }
-            );
+            const loginBtn = await axios.post("http://localhost:4000/auth", {
+                
+                    user: username,
+                    pwrd: password
+            }).then((response) => {
+                if (response.status === 200) {
+
+                    return navigate('/posts')
+                } 
+            })
             console.log(loginBtn);
             setLogin({username, password})
-            setUsername('')
-            setPassword('')
         } catch (error) {
-            console.log(error.response);
             if (error.response.status === 401) {
                 setErrMsg('Unauthorized: Please enter a valid username and password.')
-            } else if (error.response.status === 404) {
-                setErrMsg('User not found')
-            } else if (error.response.status === 400) {
-                setErrMsg('Bad request')
-            } else {
-                setErrMsg('Internal error')
-            }
+                } else if (error.response.status === 400) {
+                    setErrMsg('Bad request')
+                } else {
+                    setErrMsg('Internal error')
+                }
+            console.log(error.response);
         }
     }
   return (

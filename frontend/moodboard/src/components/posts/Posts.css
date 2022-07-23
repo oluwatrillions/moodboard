@@ -1,0 +1,19 @@
+*, div {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: #bfbfb8;
+    width: 100vw;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    cursor: pointer;
+}
+
