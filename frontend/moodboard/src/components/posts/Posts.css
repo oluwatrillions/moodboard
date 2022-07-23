@@ -14,6 +14,7 @@
     flex-direction: column;
     justify-content: space-around;
     gap: 1em;
+    align-items: center;
 }
 
 .mood-area {
@@ -24,6 +25,18 @@
 .parent {
     display: grid;
     grid-template-columns: 30vw 70vw;
+    height: 100%;
     gap: 2em;
 }
+
+.primary {
+    margin-top: 10vh;
+}
+
+.btn {
+    font-size: 2em;
+}
+
+
+
 

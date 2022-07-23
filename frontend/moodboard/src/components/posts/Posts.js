@@ -22,15 +22,17 @@ const Posts = () => {
                           What's your MOOD like today?
                       </Typography>
                       <Grid container className='mood-field'>
-                        <TextField style={{width: '20vw'}} name='name' label='Name' variant='outlined'/>
-                        <TextField style={{width: '20vw'}} name='title' label='Title' variant='outlined'/>
+                        <TextField style={{width: '20vw', backgroundColor: 'white'}} name='name' label='Name' variant='outlined'/>
+                        <TextField style={{width: '20vw', backgroundColor: 'white'}} name='title' label='Title' variant='outlined'/>
                         <TextareaAutosize className='mood-area' minRows={4} style={{width: '20vw'}} name='mood' placeholder='Mood'/>
                       </Grid>
-                      <Button variant='filled'>SEND</Button>
+                      <Button className='btn' style={{width: '20vw'}}>SEND</Button>
                   </section>
               </Container>
-              <Container className='secondary'>
-                  
+              <Container style={{backgroundColor: 'white'}} className='secondary'>
+                  <div>
+                      POSTS
+                  </div>
               </Container>
           </div>            
     </Container>
