@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
+import {Container, Grid, TextField, Typography, TextareaAutosize, Button} from '@material-ui/core'
 import './Posts.css'
-import { Typography } from '@material-ui/core'
 
 const Posts = () => {
     const errRef = useRef()
@@ -16,16 +14,26 @@ const Posts = () => {
     }, [])
 
   return (
-      <div className='container'>
-          <Container >
-              <header className='header'>
-                  <Typography variant='h3'>Post</Typography>
-                  <Typography variant='h3'>My Posts</Typography>
-                  <Typography variant='h3'>Posts</Typography>
-              </header>
-             
-          </Container>
-    </div>
+      <Container maxWidth='100vw' className='container'>
+          <div className='parent'>
+              <Container className='primary'>
+                  <section>
+                      <Typography variant='h3'>
+                          What's your MOOD like today?
+                      </Typography>
+                      <Grid container className='mood-field'>
+                        <TextField style={{width: '20vw'}} name='name' label='Name' variant='outlined'/>
+                        <TextField style={{width: '20vw'}} name='title' label='Title' variant='outlined'/>
+                        <TextareaAutosize className='mood-area' minRows={4} style={{width: '20vw'}} name='mood' placeholder='Mood'/>
+                      </Grid>
+                      <Button variant='filled'>SEND</Button>
+                  </section>
+              </Container>
+              <Container className='secondary'>
+                  
+              </Container>
+          </div>            
+    </Container>
   )
 }
 
