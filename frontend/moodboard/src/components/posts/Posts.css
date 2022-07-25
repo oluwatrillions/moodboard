@@ -15,11 +15,7 @@
     justify-content: space-around;
     gap: 1em;
     align-items: center;
-}
-
-.mood-area {
-    font-size: 1.5em;
-    padding: 1em;
+    margin-top: 2em;
 }
 
 .parent {
@@ -29,14 +25,13 @@
     gap: 2em;
 }
 
-.primary {
-    margin-top: 10vh;
+.mood-section .mood-heading {
+    margin-bottom: 2em;
 }
 
-.btn {
-    font-size: 2em;
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-
-
-
-

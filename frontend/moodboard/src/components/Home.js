@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import './Home.css'
 import axios from 'axios'
 
 const Home = () => {
+
+    const navigate = useNavigate()
 
     const errRef = useRef()
 
@@ -26,13 +28,16 @@ const Home = () => {
               username: username,
               email: email,
               password: password
-            }).then();
+          }).then((response) => {
+              if (response.status === 201) {
+                    return navigate('/login')
+                }
+            });
             console.log(details);
           setName('')
           setUsername('')
           setEmail('')
           setPassword('')
-          
       } catch (error) {
           console.log(error);
           if (error.response === 404) {
