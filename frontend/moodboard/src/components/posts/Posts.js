@@ -21,7 +21,7 @@ const Posts = () => {
     const postBtn = async (e) => {
         e.preventDefault();
         try {
-            const post = await axios.post('http://localhost:4000/post', {
+            const Post = await axios.post('http://localhost:4000/post', {
                 postedBy: name,
                 title: title,
                 mood: mood
@@ -42,10 +42,17 @@ const Posts = () => {
         }
     }
     
-    const getFeedback = async () => {
+    const GetFeedback = async () => {
         const feedback = await axios.get('http://localhost:4000/post')
-            setFeedback(feedback.data)
+        setFeedback(feedback.data)
+        console.log(feedback);
     }
+
+    useEffect(()=>{
+
+    GetFeedback()
+    }, [])
+
 
   return (
       <Container maxWidth='100%' className='container'>
@@ -84,11 +91,13 @@ const Posts = () => {
                       <Grid container>
                           <Grid item xs={12} md={6}>
                               {feedback.map((allMoods, key) => {
-                                  return <div key={allMoods._id}>
+                                  return (
+                                      <div key={allMoods._id}>
                                       <h3>{allMoods.postedBy}</h3>
                                       <h4>{allMoods.title}</h4>
                                       <h4>{ allMoods.mood}</h4>
                                   </div>
+                                  )
                               })}
                           </Grid>
                       </Grid>
