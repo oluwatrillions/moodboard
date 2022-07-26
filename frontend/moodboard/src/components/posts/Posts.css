@@ -20,7 +20,7 @@
 
 .parent {
     display: grid;
-    grid-template-columns: 30vw 70vw;
+    grid-template-columns: 20vw 80vw;
     height: 100%;
     gap: 2em;
 }
@@ -31,9 +31,6 @@
 
 .mood-section {
     margin-top: 8vh;
-}
-
-.mood-section .mood-heading {
 }
 
 form {

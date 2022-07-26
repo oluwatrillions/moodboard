@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import {Container, Typography, TextField} from '@material-ui/core'
+import {Container, Typography, Grid, TextField} from '@material-ui/core'
 import './Posts.css'
 import axios from 'axios'
 
@@ -11,6 +11,8 @@ const Posts = () => {
     const [mood, setMood] = useState()
 
     const [errMsg, setErrMsg] = useState()
+
+    const [feedback, setFeedback] = useState([])
 
     useEffect(() => {
         setErrMsg('')
@@ -38,9 +40,15 @@ const Posts = () => {
                 setErrMsg('Server is down');
             }
         }
-   }
+    }
+    
+    const getFeedback = async () => {
+        const feedback = await axios.get('http://localhost:4000/post')
+            setFeedback(feedback.data)
+    }
+
   return (
-      <Container maxWidth='100vw' className='container'>
+      <Container maxWidth='100%' className='container'>
           <div className='parent'>
               <Container className='primary'>
                   <section className='mood-section'>
@@ -73,7 +81,17 @@ const Posts = () => {
                               </li>
                           </nav>
                       </header>
-                      
+                      <Grid container>
+                          <Grid item xs={12} md={6}>
+                              {feedback.map((allMoods, key) => {
+                                  return <div key={allMoods._id}>
+                                      <h3>{allMoods.postedBy}</h3>
+                                      <h4>{allMoods.title}</h4>
+                                      <h4>{ allMoods.mood}</h4>
+                                  </div>
+                              })}
+                          </Grid>
+                      </Grid>
                   </div>
               </Container>
           </div>            
