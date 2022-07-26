@@ -14,9 +14,9 @@ const posts = async (req, res) => {
         mood: req.body.mood,
         createdAt: moment().fromNow()
          })
-        res.status(201).json({message: 'Your post was successfully created'})
+        // res.status(201).json({message: 'Your post was successfully created'})
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
     }
 }
 
