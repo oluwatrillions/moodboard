@@ -21,12 +21,10 @@ header {
     width: 20%;
 }
 
-.second-div {
-    width: 80%;
-}
-
 .secondary {
-    width: 100vw !important;
+    width: 80vw;
+    height: 100vh;
+    background-color: rgb(100, 97, 97);
 }
 
 .secondary li{
@@ -38,9 +36,39 @@ header {
     cursor: pointer;
 }
 
+
 .all-moods {
     display: flex;
-    flex-direction: column;
+    gap: 1em;
+    align-items: center;
     justify-content: center;
-    gap: 2em;
+    margin-right: 0;
+}
+
+.outlook {
+    width: 8em;
+}
+
+.mood-board {
+    display: flex;
+    flex-direction: column;
+    height: 15em;
+    padding: 1em;
+    gap: .7em;
+    background: rgb(185, 223, 223);
+}
+
+.posted-by {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.mood-title {
+    text-transform: capitalize;
+}
+
+.mood {
+    text-transform: capitalize;
+    font-style: italic;
 }

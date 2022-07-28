@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import {Container, Typography, Grid, Paper} from '@material-ui/core'
+import {Container, Typography, Grid, Card} from '@material-ui/core'
 import './Posts.css'
 import axios from 'axios'
 import Post from './Post'
@@ -31,35 +31,33 @@ const Posts = () => {
                 <div className= 'first-div'>
                     <Post />
                 </div>
-                <div className='second-div'>
-      <Container style={{ backgroundColor: 'white' }} className='secondary'>
-            <div>
+      <Container disableGutters maxWidth={false} style={{ backgroundColor: 'white' }} >
+            <div className='secondary'>
                       <header>
                           <nav>
                               <li>
-                                  <Typography variant='h4' >Posts</Typography>
-                                  <Typography variant='h4'>My Posts</Typography>
+                                  <Typography variant='h4' style={{color: 'cyan'}} onClick={getAllPosts}>Posts</Typography>
+                                  <Typography variant='h4' style={{color: 'cyan'}}>My Posts</Typography>
                               </li>
                           </nav>
                       </header>
-                      <Grid container className='all-moods'>
-                          <Grid item style={{ backgroundColor: "red" }}>
-                              <Paper>
+                      <Grid container className='all-moods'>                              
                                     {feedback.map((allMoods, key) => {
                                         return (
-                                            <div key={allMoods._id}>
-                                            <h3>{allMoods.postedBy}</h3>
-                                            <h4>{allMoods.title}</h4>
-                                            <h4>{ allMoods.mood}</h4>
-                                        </div>
+                                            <Grid item xs={6} md={2} className='outlook'>
+                                                <Card>
+                                                    <div key={allMoods._id} className='mood-board'>
+                                                        <h3 className='posted-by'>{allMoods.postedBy}</h3>
+                                                        <h4 className='mood-title'>{allMoods.title}</h4>
+                                                        <h4 className='mood'>{ allMoods.mood}</h4>
+                                                    </div>
+                                                </Card>
+                                            </Grid>
                                         )
                                     })}
-                                </Paper>
-                          </Grid>
                       </Grid>
           </div>            
                     </Container>
-                    </div>
             </div>
             </Container>
   )
