@@ -1,0 +1,79 @@
+*,
+div {
+    margin: 0;
+    padding: 0;
+}
+
+.parent {
+    background-color: #bfbfb8;
+    width: 20vw;
+    height: 100vh;
+}
+
+.primary {
+}
+
+.mood-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: 100vh;
+}
+
+.mood-heading {
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-top: 1em;
+    padding: 1em;
+}
+
+input {
+    width: 13vw;
+    min-width: 8vw;
+    height: 3em;
+    padding-left: .3em;
+    font-size: .8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: none;
+}
+
+.inputs {
+    display: flex;
+    justify-content: space-between;
+}
+
+textarea {
+    width: 13vw;
+    min-height: 10em;
+    font-size: 1em;
+    padding: .3em;
+    border: none;
+    outline: none;
+}
+
+button {
+    font-size: 1em;
+    margin-top: 0;
+    font-weight: 600;
+    background-color: rgb(199, 128, 23);
+    cursor: pointer;
+}
+
+.errMessage {
+    color: red;
+}
+
+.noErrMessage {
+    visibility: hidden;
+}
