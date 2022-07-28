@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react'
-import {Container, Typography, Grid, Card} from '@material-ui/core'
+import { Container, Typography, Grid, Card } from '@material-ui/core'
+import {NavLink} from 'react-router-dom'
 import './Posts.css'
 import axios from 'axios'
 import Post from './Post'
@@ -35,9 +36,21 @@ const Posts = () => {
             <div className='secondary'>
                       <header>
                           <nav>
-                              <li>
-                                  <Typography variant='h4' style={{color: 'cyan'}} onClick={getAllPosts}>Posts</Typography>
-                                  <Typography variant='h4' style={{color: 'cyan'}}>My Posts</Typography>
+                                <li>
+                                    <NavLink to='/posts' className={({isActive})=>(isActive ? 'active-class' : 'undefined')}>
+                                        <Typography
+                                            variant='h4'
+                                            style={{ color: 'cyan' }}
+                                            onClick={getAllPosts}
+                                        >Posts
+                                        </Typography>
+                                    </NavLink> 
+                                    <NavLink to='/post/:id' className={({isActive})=>(isActive ? 'active-class' : 'undefined')}>
+                                        <Typography variant='h4'
+                                            style={{ color: 'cyan' }}>
+                                            My Posts
+                                        </Typography>
+                                    </NavLink>
                               </li>
                           </nav>
                       </header>

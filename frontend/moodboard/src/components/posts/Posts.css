@@ -72,3 +72,8 @@ header {
     text-transform: capitalize;
     font-style: italic;
 }
+
+.active-class {
+    color: red;
+    text-decoration: underline;
+}
