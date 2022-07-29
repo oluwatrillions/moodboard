@@ -4,6 +4,7 @@ import {NavLink} from 'react-router-dom'
 import './Posts.css'
 import axios from 'axios'
 import Post from './Post'
+import MyPosts from './MyPosts'
 
 const Posts = () => {
     
@@ -32,7 +33,10 @@ const Posts = () => {
                 <div className= 'first-div'>
                     <Post />
                 </div>
-      <Container disableGutters maxWidth={false} style={{ backgroundColor: 'white' }} >
+                <div>
+                    <MyPosts/>
+                </div>
+      {/* <Container disableGutters maxWidth={false} style={{ backgroundColor: 'white' }} >
             <div className='secondary'>
                       <header>
                           <nav>
@@ -41,7 +45,6 @@ const Posts = () => {
                                         <Typography
                                             variant='h4'
                                             style={{ color: 'cyan' }}
-                                            onClick={getAllPosts}
                                         >Posts
                                         </Typography>
                                     </NavLink> 
@@ -70,7 +73,7 @@ const Posts = () => {
                                     })}
                       </Grid>
           </div>            
-                    </Container>
+                    </Container> */}
             </div>
             </Container>
   )

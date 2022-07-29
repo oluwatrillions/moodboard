@@ -10,20 +10,12 @@ div {
     height: 100vh;
 }
 
-.primary {
-}
-
 .mood-section {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 20vw;
     height: 100vh;
-}
-
-.mood-heading {
-    margin: 0;
-    padding: 0;
 }
 
 form {
@@ -46,11 +38,6 @@ input {
     flex-direction: column;
     justify-content: flex-start;
     border: none;
-}
-
-.inputs {
-    display: flex;
-    justify-content: space-between;
 }
 
 textarea {

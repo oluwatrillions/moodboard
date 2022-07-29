@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import {Container, Typography, Grid, Paper} from '@material-ui/core'
+import {Container, Typography} from '@material-ui/core'
 import './Post.css'
 import axios from 'axios'
 
@@ -43,7 +43,7 @@ const errRef = useRef()
     }
     
   return (
-    <Container disableGutters maxWidth={false} className='container'>
+    <Container disableGutters maxWidth={false}>
           <div className='parent'>
               <Container disableGutters maxWidth={false} component='div' className='primary'>
                   <section className='mood-section'>
