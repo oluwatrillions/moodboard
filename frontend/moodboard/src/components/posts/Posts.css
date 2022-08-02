@@ -8,29 +8,6 @@
     grid-template-columns: 20% 80%;
 }
 
-.header {
-    width: 80vw;
-}
-
-header {
-    width: 80vw;
-    height: 8vh;
-    display: flex;
-    margin-left: auto;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgb(100, 97, 97);
-}
-
-header li {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2em;
-    cursor: pointer;
-}
-
 .first-div{
     width: 20%;
 }

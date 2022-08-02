@@ -6,7 +6,7 @@ div {
 
 .parent {
     background-color: #bfbfb8;
-    width: 20vw;
+    width: 100vw;
     height: 100vh;
 }
 
@@ -14,7 +14,7 @@ div {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20vw;
+    width: 100vw;
     height: 100vh;
 }
 

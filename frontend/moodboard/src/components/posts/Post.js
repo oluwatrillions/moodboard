@@ -50,18 +50,15 @@ const errRef = useRef()
                       <Typography variant='h4' className='mood-heading'>What's your mood like today?</Typography>
                       <Typography variant='h5' ref={errRef} className={errMsg ? 'errMessage' : 'noErrMessage'}>{ errMsg}</Typography>
                       <form >
-                          <main className='inputs'>
                             <label htmlFor='name'>Name:</label>
-                              <input type='text' name='name' value={ name} onChange={(e)=>(setName(e.target.value))}/>
-                          </main >
-                          <main className='inputs'>
+                            <input type='text' name='name' value={name} onChange={(e) => (setName(e.target.value))} />
+                          
                             <label htmlFor='title'>Title:</label>
-                              <input type='text' name='title' value={ title} onChange={(e) => (setTitle(e.target.value))} />  
-                          </main>
-                          <main className='inputs'>
+                            <input type='text' name='title' value={title} onChange={(e) => (setTitle(e.target.value))} />  
+                          
                             <label htmlFor='mood'>Mood:</label>
-                              <textarea name='name' rows={4} value={ mood} onChange={(e) => (setMood(e.target.value))}></textarea>                              
-                          </main>
+                            <textarea name='name' rows={4} value={mood} onChange={(e) => (setMood(e.target.value))}></textarea>
+                          
                           <button onClick={postBtn}>POST</button>
                       </form>
                   </section>
