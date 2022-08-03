@@ -26,7 +26,7 @@ const MyPosts = () => {
       }, [])
 
   return (
-    <div >
+    <div className='secondary'>
         <Grid container className='all-moods'>                              
             {myMoods.map((myMoods, key) => {
                 return (

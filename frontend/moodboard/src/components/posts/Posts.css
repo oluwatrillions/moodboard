@@ -3,30 +3,12 @@
     padding: 0;
 }
 
-.post-container {
-    display: grid;
-    grid-template-columns: 20% 80%;
-}
-
-.first-div{
-    width: 20%;
-}
 
 .secondary {
-    width: 80vw;
-    height: 100vh;
+    width: 100vw;
+    height: 92vh;
     background-color: rgb(100, 97, 97);
 }
-
-.secondary li{
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2em;
-    cursor: pointer;
-}
-
 
 .all-moods {
     display: flex;

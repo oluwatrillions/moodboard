@@ -7,7 +7,7 @@ div {
 .parent {
     background-color: #bfbfb8;
     width: 100vw;
-    height: 100vh;
+    height: 92vh;
 }
 
 .mood-section {
@@ -15,46 +15,54 @@ div {
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    height: 92vh;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: 1em;
     margin-top: 1em;
     padding: 1em;
 }
 
 input {
-    width: 13vw;
+    width: 18vw;
     min-width: 8vw;
     height: 3em;
     padding-left: .3em;
-    font-size: .8em;
+    font-size: 1.2em;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     border: none;
 }
 
+label {
+    font-size: 1.5em;
+}
+
 textarea {
-    width: 13vw;
-    min-height: 10em;
-    font-size: 1em;
-    padding: .3em;
+    width: 18vw;
+    min-height: 15em;
+    font-size: 1.2em;
+    padding: .5em;
     border: none;
     outline: none;
+    resize: none;
 }
 
 button {
     font-size: 1em;
-    margin-top: 0;
     font-weight: 600;
     background-color: rgb(199, 128, 23);
     cursor: pointer;
+}
+
+.btn {
+    width: 18vw;
 }
 
 .errMessage {

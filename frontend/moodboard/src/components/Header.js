@@ -14,7 +14,7 @@ const Header = () => {
                             <NavLink to='/post' className={({isActive})=>(isActive ? 'active-class' : 'undefined')}>
                                 <Typography variant='h4'
                                     style={{ color: 'cyan' }}
-                                    // onClick={getMyPosts}
+                                    // onClick={postBtn}
                                     >
                                     Home
                                 </Typography>

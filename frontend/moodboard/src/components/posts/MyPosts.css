@@ -1,0 +1,53 @@
+*,
+div {
+    margin: 0;
+    padding: 0;
+}
+
+
+.secondary {
+    width: 100vw;
+    height: 92vh;
+    background-color: rgb(100, 97, 97);
+}
+
+.all-moods {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0;
+}
+
+.outlook {
+    width: 8em;
+}
+
+.mood-board {
+    display: flex;
+    flex-direction: column;
+    height: 15em;
+    padding: 1em;
+    gap: .7em;
+    background: rgb(185, 223, 223);
+}
+
+.posted-by {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.mood-title {
+    text-transform: capitalize;
+}
+
+.mood {
+    text-transform: capitalize;
+    font-style: italic;
+}
+
+.active-class {
+    color: red;
+    text-decoration: underline;
+}

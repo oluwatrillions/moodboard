@@ -48,8 +48,9 @@ const errRef = useRef()
               <Container disableGutters maxWidth={false} component='div' className='primary'>
                   <section className='mood-section'>
                       <Typography variant='h4' className='mood-heading'>What's your mood like today?</Typography>
-                      <Typography variant='h5' ref={errRef} className={errMsg ? 'errMessage' : 'noErrMessage'}>{ errMsg}</Typography>
-                      <form >
+                      <Typography variant='h5' ref={errRef} className={errMsg ? 'errMessage' : 'noErrMessage'}>{errMsg}</Typography>
+                      
+                      <form onClick={postBtn}>
                             <label htmlFor='name'>Name:</label>
                             <input type='text' name='name' value={name} onChange={(e) => (setName(e.target.value))} />
                           
@@ -59,7 +60,7 @@ const errRef = useRef()
                             <label htmlFor='mood'>Mood:</label>
                             <textarea name='name' rows={4} value={mood} onChange={(e) => (setMood(e.target.value))}></textarea>
                           
-                          <button onClick={postBtn}>POST</button>
+                            <button className='btn'>POST</button>
                       </form>
                   </section>
               </Container>
