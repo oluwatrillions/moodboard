@@ -13,6 +13,7 @@ const Home = () => {
     const [username, setUsername]= useState('')
     const [email, setEmail]= useState('')
     const [password, setPassword] = useState('')
+    const [userId, setUserId] = useState('')
 
     const [errMsg, setErrMsg] = useState('')
 
@@ -27,7 +28,8 @@ const Home = () => {
               name: name,
               username: username,
               email: email,
-              password: password
+              password: password,
+              _id: userId 
           }).then((response) => {
               if (response.status === 201) {
                     return navigate('/login')

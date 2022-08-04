@@ -1,13 +1,12 @@
-import React, { useState, useRef, useEffect, useContext } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import {useNavigate} from 'react-router-dom'
 import './Login.css'
 import axios from 'axios'
-import LoginContext from '../context/LoginProvider'
 
 const Login = () => {
 
     const navigate = useNavigate()
-    const {setLogin} = useContext(LoginContext)
+    // const {setLogin} = useContext(LoginContext)
 
     const errRef = useRef()
 
@@ -34,7 +33,6 @@ const Login = () => {
                 } 
             })
             console.log(loginBtn);
-            setLogin({username, password})
         } catch (error) {
             if (error.response.status === 401) {
                 setErrMsg('Unauthorized: Please enter a valid username and password.')
