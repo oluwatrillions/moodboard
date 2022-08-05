@@ -2,8 +2,14 @@ import React, { useState, useEffect, useRef } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import './Home.css'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import getAllUsers from './features/usersSlice'
 
 const Home = () => {
+
+    const dispatch = useDispatch()
+
+    const user = useSelector(getAllUsers)
 
     const navigate = useNavigate()
 
@@ -29,17 +35,19 @@ const Home = () => {
               username: username,
               email: email,
               password: password,
-              _id: userId 
+              id: userId 
           }).then((response) => {
               if (response.status === 201) {
-                    return navigate('/login')
-                }
+                  return navigate('/login')
+              }
+              console.log(response.data.userId);
             });
             console.log(details);
           setName('')
           setUsername('')
           setEmail('')
           setPassword('')
+          setUserId('')
       } catch (error) {
           console.log(error);
           if (error.response === 404) {
