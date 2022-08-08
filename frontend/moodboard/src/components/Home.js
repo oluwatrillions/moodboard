@@ -2,26 +2,26 @@ import React, { useState, useEffect, useRef } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import './Home.css'
 import axios from 'axios'
-import { useDispatch, useSelector } from 'react-redux'
-import getAllUsers from './features/usersSlice'
+import { useSelector, useDispatch } from 'react-redux'
+import registerNewUser from './features/registerSlice'
+import { nanoid } from '@reduxjs/toolkit'
 
 const Home = () => {
 
     const dispatch = useDispatch()
-
-    const user = useSelector(getAllUsers)
+    const usersNew = useSelector((state) => state.user)
 
     const navigate = useNavigate()
 
     const errRef = useRef()
 
-    const [name, setName]= useState('')
-    const [username, setUsername]= useState('')
-    const [email, setEmail]= useState('')
+    const [name, setName] = useState('')
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [userId, setUserId] = useState('')
-
+    const [id, setId] = useState(1)
     const [errMsg, setErrMsg] = useState('')
+
 
     useEffect(() => {
         setErrMsg('')
@@ -29,38 +29,28 @@ const Home = () => {
     
     const signupBtn = async (e) => {
         e.preventDefault()
-      try {
-          const details = await axios.post("http://localhost:4000/register", {
-              name: name,
-              username: username,
-              email: email,
-              password: password,
-              id: userId 
-          }).then((response) => {
-              if (response.status === 201) {
-                  return navigate('/login')
-              }
-              console.log(response.data.userId);
-            });
-            console.log(details);
-          setName('')
-          setUsername('')
-          setEmail('')
-          setPassword('')
-          setUserId('')
-      } catch (error) {
-          console.log(error);
-          if (error.response === 404) {
-            setErrMsg('You are making a bad request')
-          } else if (error.response === 409) {
-              setErrMsg('User already exists')
-          } else {
-              setErrMsg('Internal error')
-        }
-      }
 
+        dispatch(registerNewUser({
+            name: name,
+            username: username,
+            email: email,
+            password: password,
+        }));
+        navigate('/login')
+
+    //    try {
+    //        const logger = await axios.post('http://localhost:4000/register', {
+    //            name,
+    //            username,
+    //            email,
+    //            password
+    //     })
+    //     return navigate('/login')
+    //    } catch (error) {
+    //     console.log(error);
+    //    }
     }
-    
+       
     return (
     <div className='home'>
             <section>

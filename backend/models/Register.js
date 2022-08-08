@@ -6,7 +6,7 @@ const RegisterSchema = new Schema({
     username: {type: String, required: true},
     password: {type: String, required: true},
     email: { type: String },
-    id: Schema.Types.ObjectId,
+    id: {type: String},
     createdAt: {type: Date}
 })
 

@@ -27,7 +27,7 @@ const Posts = () => {
       <Container disableGutters maxWidth={false} >
             <div className='secondary'>
                 <Grid container className='all-moods'>                              
-                    {feedback.map((allMoods, key) => {
+                    {feedback.map((allMoods) => {
                         return (
                             <Grid item xs={6} md={2} className='outlook'>
                                 <Card>
