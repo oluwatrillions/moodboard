@@ -41,7 +41,7 @@ const Login = () => {
                 } else {
                     setErrMsg('Internal error')
                 }
-            console.log(error.response);
+            console.log(error);
         }
     }
 

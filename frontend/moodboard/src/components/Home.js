@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import './Home.css'
-import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
-import registerNewUser from './features/registerSlice'
 import { nanoid } from '@reduxjs/toolkit'
+import { newUser } from './features/registerSlice'
 
 const Home = () => {
 
@@ -27,16 +26,21 @@ const Home = () => {
         setErrMsg('')
     }, [name, username, email, password])
     
-    const signupBtn = async (e) => {
+    const signupBtn = (e) => {
         e.preventDefault()
-
-        dispatch(registerNewUser({
-            name: name,
-            username: username,
-            email: email,
-            password: password,
-        }));
-        navigate('/login')
+        try {
+            
+            dispatch(newUser({
+                name,
+                username,
+                email,
+                password,
+            }));
+            navigate('/login')
+        } catch (error) {
+            console.log(error);
+        }
+          
 
     //    try {
     //        const logger = await axios.post('http://localhost:4000/register', {
