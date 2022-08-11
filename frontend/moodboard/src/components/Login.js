@@ -2,11 +2,13 @@ import React, { useState, useRef, useEffect } from 'react'
 import {useNavigate} from 'react-router-dom'
 import './Login.css'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { newUser, RegisterUser } from './features/registerSlice'
 
 const Login = () => {
-
+    const dispatch = useDispatch()
+    const loggedUser = useSelector(RegisterUser)
     const navigate = useNavigate()
-    // const {setLogin} = useContext(LoginContext)
 
     const errRef = useRef()
 

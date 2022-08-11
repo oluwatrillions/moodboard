@@ -12,7 +12,6 @@ const MyPosts = () => {
 
     const dispatch = useDispatch()
 
-    const users = useSelector(getAllUsers)
 
     const [myMoods, setMyMoods] = useState([])
 

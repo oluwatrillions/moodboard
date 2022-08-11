@@ -3,12 +3,13 @@ import {Link, useNavigate} from 'react-router-dom'
 import './Home.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { nanoid } from '@reduxjs/toolkit'
-import { newUser } from './features/registerSlice'
+import { newUser, registerNewUser, RegisterUser } from './features/registerSlice'
 
 const Home = () => {
 
     const dispatch = useDispatch()
-    const usersNew = useSelector((state) => state.user)
+    const fetchedUser = useSelector((state)=> state.user)
+    console.log(fetchedUser);
 
     const navigate = useNavigate()
 
@@ -29,13 +30,14 @@ const Home = () => {
     const signupBtn = (e) => {
         e.preventDefault()
         try {
-            
             dispatch(newUser({
                 name,
                 username,
                 email,
-                password,
+                password
             }));
+        
+            if(name && username && email && password)
             navigate('/login')
         } catch (error) {
             console.log(error);
