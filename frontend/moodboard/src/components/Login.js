@@ -2,12 +2,8 @@ import React, { useState, useRef, useEffect } from 'react'
 import {useNavigate} from 'react-router-dom'
 import './Login.css'
 import axios from 'axios'
-import { useDispatch, useSelector } from 'react-redux'
-import { newUser, RegisterUser } from './features/registerSlice'
 
 const Login = () => {
-    const dispatch = useDispatch()
-    const loggedUser = useSelector(RegisterUser)
     const navigate = useNavigate()
 
     const errRef = useRef()
@@ -24,17 +20,16 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const loginBtn = await axios.post("http://localhost:4000/auth", {
+            await axios.post("http://localhost:4000/auth", {
                 
-                    user: username,
-                    pwrd: password
+                user: username,
+                pwrd: password,
             }).then((response) => {
                 if (response.status === 200) {
 
                     return navigate('/posts')
                 } 
             })
-            console.log(loginBtn);
         } catch (error) {
             if (error.response.status === 401) {
                 setErrMsg('Unauthorized: Please enter a valid username and password.')

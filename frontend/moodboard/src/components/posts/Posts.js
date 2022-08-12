@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react'
 import { Container, Grid, Card } from '@material-ui/core'
 import './Posts.css'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const Posts = () => {
     
@@ -31,11 +32,13 @@ const Posts = () => {
                         return (
                             <Grid item xs={6} md={2} className='outlook'>
                                 <Card>
-                                    <div key={allMoods._id} className='mood-board'>
-                                        <h3 className='posted-by'>{allMoods.postedBy}</h3>
-                                        <h4 className='mood-title'>{allMoods.title}</h4>
-                                        <h4 className='mood'>{ allMoods.mood}</h4>
-                                    </div>
+                                    <Link to='/user/posts/:id'>
+                                        <div key={allMoods._id} className='mood-board'>
+                                            <Link to='/moodboard/user/:id'><h3 className='posted-by'>{allMoods.postedBy}</h3></Link>
+                                            <h4 className='mood-title'>{allMoods.title}</h4>
+                                            <h4 className='mood'>{ allMoods.mood}</h4>
+                                        </div>
+                                    </Link>
                                 </Card>
                             </Grid>
                         )

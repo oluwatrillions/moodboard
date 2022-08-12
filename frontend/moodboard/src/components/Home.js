@@ -1,15 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import './Home.css'
-import { useSelector, useDispatch } from 'react-redux'
-import { nanoid } from '@reduxjs/toolkit'
-import { newUser, registerNewUser, RegisterUser } from './features/registerSlice'
+import axios from 'axios'
 
 const Home = () => {
-
-    const dispatch = useDispatch()
-    const fetchedUser = useSelector((state)=> state.user)
-    console.log(fetchedUser);
 
     const navigate = useNavigate()
 
@@ -19,7 +13,6 @@ const Home = () => {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [id, setId] = useState(1)
     const [errMsg, setErrMsg] = useState('')
 
 
@@ -27,34 +20,20 @@ const Home = () => {
         setErrMsg('')
     }, [name, username, email, password])
     
-    const signupBtn = (e) => {
+    const signupBtn = async (e) => {
         e.preventDefault()
-        try {
-            dispatch(newUser({
-                name,
-                username,
-                email,
-                password
-            }));
-        
-            if(name && username && email && password)
-            navigate('/login')
-        } catch (error) {
-            console.log(error);
-        }
-          
 
-    //    try {
-    //        const logger = await axios.post('http://localhost:4000/register', {
-    //            name,
-    //            username,
-    //            email,
-    //            password
-    //     })
-    //     return navigate('/login')
-    //    } catch (error) {
-    //     console.log(error);
-    //    }
+       try {
+           await axios.post('http://localhost:4000/register', {
+               name,
+               username,
+               email,
+               password,
+        })
+        return navigate('/login')
+       } catch (error) {
+        console.log(error);
+       }
     }
        
     return (

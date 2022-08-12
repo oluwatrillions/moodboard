@@ -6,24 +6,11 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Post from './components/posts/Post';
 import MyPosts from './components/posts/MyPosts';
 import Layout from './components/Layout';
-import { useDispatch, useSelector } from 'react-redux';
-import { registerNewUser, isLoading, newUser} from './components/features/registerSlice';
-import { useEffect } from 'react';
+import SingleUser from './components/users/SingleUser'
+import SingleUserPost from './components/users/SingleUserPost'
 
 
 function App() {
-    const dispatch = useDispatch()
-    const isLoading = useSelector((state)=> state.user)
-
-    useEffect(() => {
-    dispatch(registerNewUser(newUser))
-    }, [])
-    
-    if (isLoading) {
-        return <div>
-            <h3>Loading</h3>
-        </div>
-    }
   return (
       <div className="App">
           <Router>
@@ -32,6 +19,8 @@ function App() {
                         <Route path='/post' element={<Post />} />
                         <Route path='/posts' element={<Posts />} />
                         <Route path='/post/:id' element={<MyPosts />} />
+                        <Route path='/moodboard/user/:id' element={<SingleUser />} />
+                        <Route path='/user/post/:id' element={<SingleUserPost />} />
                   </Route>
                   <Route index element={<Home/>} />
                   <Route path='/login' element={<Login />} />

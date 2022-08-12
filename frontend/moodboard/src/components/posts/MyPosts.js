@@ -2,22 +2,18 @@ import React, { useState, useEffect} from 'react'
 import './MyPosts.css'
 import { Grid, Card } from '@material-ui/core'
 import axios from 'axios'
-import { getAllUsers } from '../features/usersSlice'
-import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 
 
 const MyPosts = () => {
-
-    const dispatch = useDispatch()
-
+    const {id} = useParams()
 
     const [myMoods, setMyMoods] = useState([])
 
     
     const getMyPosts = async () => {
-        await axios.get(`http://localhost:4000/post/:id`)
+        await axios.get(`http://localhost:4000/post/${id}`)
             .then((response) => {
                 console.log(response);
                 setMyMoods(response.data)
