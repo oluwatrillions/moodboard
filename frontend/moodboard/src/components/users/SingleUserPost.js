@@ -4,24 +4,17 @@ import axios from 'axios'
 import { useParams, Link } from 'react-router-dom'
 import '../posts/Posts.css'
 
-const SingleUserPost = (post) => {
+const SingleUserPost = ({id}) => {
     const params = useParams()
 
+    const [name, setName] = useState()
+    const [title, setTitle] = useState()
+    const [mood, setMood] = useState()
+
     const [postId, setPostId] = useState(null)
+    // console.log(id, mood, title, postedBy);
 
      const [feedback, setFeedback] = useState([])
-
-    
-    const getSinglePosts = async () => {
-        await axios.get(`http://localhost:4000/post/${params}`)
-            .then((response) => {
-                console.log(response);
-                setFeedback(response.data)
-                console.log(feedback);
-            }).catch((err) => {
-                console.log(err);
-            })
-    }
 
     return (
         <>
@@ -29,21 +22,15 @@ const SingleUserPost = (post) => {
             <Container disableGutters maxWidth={false} >
                     <div className='secondary'>
                         <Grid container className='all-moods'>                              
-                            {feedback.map((allMoods) => {
-                                return (
-                                    <Grid item xs={6} md={2} className='outlook'>
-                                        <Card key={allMoods.id}>
-                                            <Link to='/post/:id'>
+                            <Grid item xs={6} md={2} className='outlook'>
+                                        <Card key={id}>
                                                 <div  className='mood-board'>
-                                                    <h3 className='posted-by'>{allMoods.postedBy}</h3>
-                                                    <h4 className='mood-title'>{allMoods.title}</h4>
-                                                    <h4 className='mood'>{ allMoods.mood}</h4>
+                                                    <h3 className='posted-by'>{name}</h3>
+                                                    <h4 className='mood-title'>{title}</h4>
+                                                    <h4 className='mood'>{mood}</h4>
                                                 </div>
-                                            </Link>
                                         </Card>
-                                    </Grid>
-                                )
-                            })}
+                                </Grid>
                         </Grid>
                     </div>
                 </Container>

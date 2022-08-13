@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import './SignUp.css'
 import axios from 'axios'
+import {nanoid} from '@reduxjs/toolkit'
 
 const Home = () => {
 
@@ -14,11 +15,12 @@ const Home = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [errMsg, setErrMsg] = useState('')
+    const [userId, setUserId] = useState('')
 
 
     useEffect(() => {
         setErrMsg('')
-    }, [name, username, email, password])
+    }, [name, username, email, password, userId])
     
     const signupBtn = async (e) => {
         e.preventDefault()
@@ -29,7 +31,10 @@ const Home = () => {
                username,
                email,
                password,
-        })
+               userId: nanoid()
+           })
+           console.log(userId);
+           
         return navigate('/login')
        } catch (error) {
         console.log(error);
@@ -40,7 +45,7 @@ const Home = () => {
     <div className='home'>
             <section>
                 <h3 ref={errRef} className={errMsg ? "errMsg" : "noErrMsg"}>{ errMsg}</h3>
-                <form >
+                <form key={userId}>
                     <main>
                         <label htmlFor='name'>Name:</label> 
                         <input type="text" name='name' value={name} onChange={ ((e)=> setName(e.target.value))} />
