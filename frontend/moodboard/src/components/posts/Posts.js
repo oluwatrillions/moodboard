@@ -5,6 +5,8 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 const Posts = () => {
+        const [Id, setId] = useState('')
+
     
     const [feedback, setFeedback] = useState([])
 
@@ -31,14 +33,12 @@ const Posts = () => {
                     {feedback.map((allMoods) => {
                         return (
                             <Grid item xs={6} md={2} className='outlook'>
-                                <Card>
-                                    <Link to='/user/posts/:id'>
-                                        <div key={allMoods._id} className='mood-board'>
-                                            <Link to='/moodboard/user/:id'><h3 className='posted-by'>{allMoods.postedBy}</h3></Link>
+                                <Card key={allMoods.id}>
+                                        <div  className='mood-board'>
+                                            <Link to={'/post/${id'}><h3 className='posted-by'>{allMoods.postedBy}</h3></Link>
                                             <h4 className='mood-title'>{allMoods.title}</h4>
-                                            <h4 className='mood'>{ allMoods.mood}</h4>
+                                            {/* <h4 className='mood'>{ allMoods.mood}</h4> */}
                                         </div>
-                                    </Link>
                                 </Card>
                             </Grid>
                         )

@@ -10,23 +10,21 @@ const MyPosts = () => {
     const {id} = useParams()
 
     const [myMoods, setMyMoods] = useState([])
+    const [Id, setId] = useState('')
 
     
     const getMyPosts = async () => {
-        await axios.get(`http://localhost:4000/post/${id}`)
+        await axios.get(`http://localhost:4000/post/:${id}`)
             .then((response) => {
                 console.log(response);
                 setMyMoods(response.data)
+                setId( response.data._id )
+                console.log(Id);
             }).catch((err) => {
                 console.log(err);
             })
     }
 
-      useEffect(()=>{
-    
-        getMyPosts();
-
-      }, [])
 
   return (
     <div className='secondary'>

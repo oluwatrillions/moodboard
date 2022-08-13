@@ -16,7 +16,7 @@ const Header = () => {
                                     style={{ color: 'cyan' }}
                                     // onClick={postBtn}
                                     >
-                                    Home
+                                    Post
                                 </Typography>
                             </NavLink>
                             <NavLink to='/posts' className={({isActive})=>(isActive ? 'active-class' : 'undefined')}>

@@ -1,5 +1,5 @@
 import './App.css';
-import Home from './components/Home'
+import SignUp from './components/SignUp'
 import Login from './components/Login'
 import Posts from './components/posts/Posts'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
@@ -22,7 +22,7 @@ function App() {
                         <Route path='/moodboard/user/:id' element={<SingleUser />} />
                         <Route path='/user/post/:id' element={<SingleUserPost />} />
                   </Route>
-                  <Route index element={<Home/>} />
+                  <Route index element={<SignUp/>} />
                   <Route path='/login' element={<Login />} />
                   
                 </Routes>

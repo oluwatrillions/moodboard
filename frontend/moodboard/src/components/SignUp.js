@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
-import './Home.css'
+import './SignUp.css'
 import axios from 'axios'
 
 const Home = () => {
