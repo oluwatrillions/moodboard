@@ -28,14 +28,14 @@ const Header = () => {
                                 Posts
                                 </Typography>
                             </NavLink> 
-                            <NavLink to='/post/:id' className={({isActive})=>(isActive ? 'active-class' : 'undefined')}>
+                            {/* <NavLink to='/post/:id' className={({isActive})=>(isActive ? 'active-class' : 'undefined')}>
                                 <Typography variant='h4'
                                     style={{ color: 'cyan' }}
                                     // onClick={getMyPosts}
                                     >
                                     My Posts
                                 </Typography>
-                            </NavLink>
+                            </NavLink> */}
                         </li>
                     </nav>
             </header>
