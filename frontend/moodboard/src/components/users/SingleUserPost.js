@@ -1,38 +1,40 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Card, Grid } from '@material-ui/core'
+import { Container, Card } from '@material-ui/core'
 import axios from 'axios'
 import { useParams, Link } from 'react-router-dom'
 import '../posts/Posts.css'
 
-const SingleUserPost = ({id, name, title, mood}) => {
-    const params = useParams()._id
+const SingleUserPost = ({id}) => {
 
-    const [postId, setPostId] = useState(null)
+    const [postId, setPostId] = useState('')
     // console.log(id, mood, title, postedBy);
 
-    const [feedback, setFeedback] = useState([])
+    const [feed, setFeed] = useState([])
 
-    const getSinglePosts = async ({_id}) => {
-       await axios.get(`http://localhost:4000/post/${params}`)
-           .then((response) => {
-               console.log('hello');
-               setFeedback(response.data)
-               console.log(feedback);
-           }).catch((err) => {
-               console.log(err);
-           })
-    }
+    useEffect(() => {
+        const getSinglePosts = async () => {
+           await axios.get(`http://localhost:4000/post/${postId}`)
+               .then((response) => {
+                   setFeed(response.data)
+                   setPostId(response.data.postId)
+               }).catch((err) => {
+                   console.log(err);
+               })
+        }
+        getSinglePosts();
+
+    }, [feed])
     
 
     return (
         <Container disableGutters maxWidth={false} >
             <Card >
                 {
-                    feedback.map((allMoods) => {
+                    feed.map((allMoods) => {
                         console.log(allMoods);
                        return(
                         
-                           <div className='mood-board' key={allMoods.id} onClick={getSinglePosts}>
+                           <div className='mood-board' key={allMoods.id}>
                                     <h3 className='posted-by'>{allMoods.name}</h3>
                                     <h4 className='mood-title'>{allMoods.title}</h4>
                                     <h4 className='mood'>{allMoods.mood}</h4>

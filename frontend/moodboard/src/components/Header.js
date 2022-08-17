@@ -16,7 +16,7 @@ const Header = () => {
                                     style={{ color: 'cyan' }}
                                     // onClick={postBtn}
                                     >
-                                    Post
+                                    Create Post
                                 </Typography>
                             </NavLink>
                             <NavLink to='/posts' className={({isActive})=>(isActive ? 'active-class' : 'undefined')}>
@@ -25,17 +25,9 @@ const Header = () => {
                                     style={{ color: 'cyan' }}
                                     // onClick={getAllPosts}
                                 >
-                                Posts
+                                View Posts
                                 </Typography>
                             </NavLink> 
-                            {/* <NavLink to='/post/:id' className={({isActive})=>(isActive ? 'active-class' : 'undefined')}>
-                                <Typography variant='h4'
-                                    style={{ color: 'cyan' }}
-                                    // onClick={getMyPosts}
-                                    >
-                                    My Posts
-                                </Typography>
-                            </NavLink> */}
                         </li>
                     </nav>
             </header>

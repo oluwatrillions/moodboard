@@ -31,7 +31,7 @@ const updatePost = async (req, res) => {
         return res.status(400).json({message: 'Please enter an id'})
     }
 
-    const updatePost = await Post.findOne({ _id: req.params.id }).exec()
+    const updatePost = await Post.findOne({ postId: req.params.id }).exec()
 
     if (!updatePost) {
         return res.status(404).json({message: 'The id does not exist'})
@@ -50,7 +50,7 @@ const deletePost = async (req, res) => {
     if (!req.params.id) {
          return res.status(400).json({message: 'Please enter an id'})
     }
-    const post = await Post.findOne({ _id: req.params.id }).exec()
+    const post = await Post.findOne({ postId: req.params.id }).exec()
     if (!post) {
         return res.status(404).json({message: 'The id does not exist'})
     }
@@ -62,7 +62,7 @@ const getOnePost = async (req, res) => {
     if (!req.params.id) {
          return res.status(400).json({message: 'Please enter an id'})
     }
-    const post = await Post.findOne({ _id: req.params.id }).exec()
+    const post = await Post.findOne({ postId: req.params.id }).exec()
     if (!post) {
         return res.status(404).json({message: 'The id does not exist'})
     }
