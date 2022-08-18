@@ -2,27 +2,24 @@ import React, { useState, useEffect} from 'react'
 import { Container, Grid, Card } from '@material-ui/core'
 import './Posts.css'
 import axios from 'axios'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import SingleUserPost from '../users/SingleUserPost'
 
 
 const Posts = () => {
     const navigate = useNavigate()
-
-    const params = useParams()
-
-    console.log(params);
-
     
     const [feedback, setFeedback] = useState([])
     const [postpage, setPostpage] = useState(false)
 
       useEffect(()=>{
           const getAllPosts = async () => {
-              await axios.get('http://localhost:4000/post')
+              await axios
+                  .get('http://localhost:4000/post')
                   .then((response) => {
                       setFeedback(response.data)
-                  }).catch((err) => {
+                  })
+                  .catch((err) => {
                       console.log(err);
                   })
         }
@@ -42,12 +39,13 @@ const Posts = () => {
                                 xs={6}
                                 md={2}
                                 className='outlook'
-                                onClick={() => navigate(`${allMoods.postId}`)}>
+                                onClick={() => navigate(`/post/${allMoods.postId}`)}>
                                 <div>
                                     {
                                         !postpage ?
-                                            <Card key={allMoods.postId}
-                                                onClick={() => {setPostpage(true)
+                                            <Card key={allMoods._id}
+                                                onClick={() => {
+                                                    setPostpage(true)
                                         }}>
                                             <div  className='mood-board'>
                                                 <h3 className='posted-by'>{allMoods.postedBy}</h3>
