@@ -7,10 +7,11 @@ import SingleUserPost from '../users/SingleUserPost'
 
 
 const Posts = () => {
-    const [postId, setPostId] = useState('')
     const navigate = useNavigate()
 
     const params = useParams()
+
+    console.log(params);
 
     
     const [feedback, setFeedback] = useState([])
@@ -21,7 +22,6 @@ const Posts = () => {
               await axios.get('http://localhost:4000/post')
                   .then((response) => {
                       setFeedback(response.data)
-                      setPostId(response.data.postid)
                   }).catch((err) => {
                       console.log(err);
                   })
@@ -34,13 +34,20 @@ const Posts = () => {
       <Container disableGutters maxWidth={false} >
             <div className='secondary'>
                 <Grid container className='all-moods'>                              
-                    {feedback.map((allMoods) => {
+                    {feedback.map((allMoods, i) => {
+                        console.log(allMoods);
                         return (
-                            <Grid item xs={6} md={2} className='outlook' onClick={() => navigate(`/post/${params.postId}`)}>
+                            <Grid
+                                item
+                                xs={6}
+                                md={2}
+                                className='outlook'
+                                onClick={() => navigate(`${allMoods.postId}`)}>
                                 <div>
                                     {
-                                        !postpage ? <Card key={allMoods._id} onClick={() => {
-                                            setPostpage(true)
+                                        !postpage ?
+                                            <Card key={allMoods.postId}
+                                                onClick={() => {setPostpage(true)
                                         }}>
                                             <div  className='mood-board'>
                                                 <h3 className='posted-by'>{allMoods.postedBy}</h3>
@@ -52,10 +59,14 @@ const Posts = () => {
                                             : 
 
                                              
-                                            <SingleUserPost id={allMoods.postId} name={allMoods.name} title={allMoods.title} mood={allMoods.mood } />
-                                }
+                                        <SingleUserPost
+                                            postId={allMoods.postId}
+                                            name={allMoods.name}
+                                            title={allMoods.title}
+                                            mood={allMoods.mood} />
+                                    }
                                 </div>
-                                </Grid>
+                            </Grid>
                         )
                     })}
                 </Grid>
