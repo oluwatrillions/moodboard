@@ -23,8 +23,7 @@ const Posts = () => {
                       console.log(err);
                   })
         }
-        getAllPosts();
-
+        getAllPosts(); 
       }, [])
 
     return (
