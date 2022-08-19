@@ -1,0 +1,35 @@
+.primary {
+    width: 100vw;
+    height: 92vh;
+    background-color: rgb(100, 97, 97);
+}
+
+.mood-grid {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mood-key {
+    display: flex;
+    flex-direction: column;
+    height: 15em;
+    padding: 1em;
+    gap: .7em;
+    background: rgb(185, 223, 223);
+}
+
+.poster {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.mood-topic {
+    text-transform: capitalize;
+}
+
+.mood-body {
+    text-transform: capitalize;
+    font-style: italic;
+}

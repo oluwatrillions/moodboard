@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Card } from '@material-ui/core'
+import { Container, Card, Grid } from '@material-ui/core'
 import axios from 'axios'
-import { useParams, Link } from 'react-router-dom'
-import '../posts/Posts.css'
-
+import { useParams} from 'react-router-dom'
+import './SingleUserPost.css'
 const SingleUserPost = () => {
     
     let {id} = useParams()
@@ -27,14 +26,19 @@ const SingleUserPost = () => {
     
 
     return (
-        <Container disableGutters maxWidth={false} >
-            <Card >
-                <div className='mood-board' key={feed.id}>
-                        <h3 className='posted-by'>{feed.name}</h3>
-                        <h4 className='mood-title'>{feed.title}</h4>
-                        <h4 className='mood'>{feed.mood}</h4>
-                </div>
-            </Card>
+        <Container disableGutters maxWidth={false} className='primary'>
+            <Grid
+                className='mood-grid'
+                item
+            xs={4}>
+                <Card >
+                    <div className='mood-key' key={feed.id}>
+                            <h3 className='poster'>{feed.name}</h3>
+                            <h4 className='mood-topic'>{feed.title}</h4>
+                            <h4 className='mood-body'>{feed.mood}</h4>
+                    </div>
+                </Card>
+            </Grid>
         </Container>
     )
 }

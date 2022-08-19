@@ -30,8 +30,7 @@ const Posts = () => {
       <Container disableGutters maxWidth={false} >
             <div className='secondary'>
                 <Grid container className='all-moods'>                              
-                    {feedback.map((allMoods, i) => {
-                        console.log(allMoods);
+                    {feedback.map((allMoods) => {
                         return (
                             <Grid
                                 item
