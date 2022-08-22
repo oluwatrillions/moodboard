@@ -48,7 +48,7 @@ const Posts = () => {
                                             <div  className='mood-board'>
                                                 <h3 className='posted-by'>{allMoods.postedBy}</h3>
                                                 <h4 className='mood-title'>{allMoods.title}</h4>
-                                            <h4 className='mood'>{ allMoods.mood}</h4>
+                                                <h4 className='mood'>{ allMoods.mood}</h4>
                                             </div>
                                         </Card>
 

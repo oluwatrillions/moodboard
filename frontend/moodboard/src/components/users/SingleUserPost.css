@@ -1,13 +1,33 @@
+*, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .primary {
     width: 100vw;
     height: 92vh;
     background-color: rgb(100, 97, 97);
+    margin: 0;
+}
+
+.grid-container {
+    width: 100vw;
 }
 
 .mood-grid {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 30vw;
     align-items: center;
     justify-content: center;
+    padding-top: 10vh;
+}
+
+.single-user {
+    display: flex;
+    flex-direction: column;
+    background: rgb(185, 223, 223);
+    height: 30vh;
 }
 
 .mood-key {
@@ -16,7 +36,16 @@
     height: 15em;
     padding: 1em;
     gap: .7em;
-    background: rgb(185, 223, 223);
+    background: rgb(23, 27, 27);
+    height: 70%;
+}
+
+.btn-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    gap: 1em;
 }
 
 .poster {

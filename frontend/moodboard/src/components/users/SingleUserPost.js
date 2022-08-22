@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Card, Grid } from '@material-ui/core'
+import { Container, Card, Grid, Button } from '@material-ui/core'
+import {styled} from '@material-ui/core/styles'
 import axios from 'axios'
 import { useParams} from 'react-router-dom'
 import './SingleUserPost.css'
@@ -23,6 +24,16 @@ const SingleUserPost = () => {
         getSinglePosts();
 
     }, [feed])
+
+    const MyButton = styled(Button)({
+        background: 'rgb(53, 66, 66)',
+        margin: 0,
+        color: 'white',
+        width: '28px',
+        fontSize: '20px',
+        padding: '.5em 1.5em',
+        cursor: 'pointer'
+    })
     
 
     return (
@@ -30,13 +41,19 @@ const SingleUserPost = () => {
             <Grid
                 className='mood-grid'
                 item
-            xs={4}>
+                xs={12}>
                 <Card >
-                    <div className='mood-key' key={feed.id}>
-                            <h3 className='poster'>{feed.name}</h3>
-                            <h4 className='mood-topic'>{feed.title}</h4>
-                            <h4 className='mood-body'>{feed.mood}</h4>
-                    </div>
+                    <div className='single-user'>
+                        <div className='mood-key' key={feed.id}>
+                                <h3 className='poster'>{feed.name}</h3>
+                                <h4 className='mood-topic'>{feed.title}</h4>
+                                <h4 className='mood-body'>{feed.mood}</h4>
+                        </div>
+                        <div className='btn-div'>
+                            <MyButton>Edit</MyButton>
+                            <MyButton>Delete</MyButton>
+                        </div>
+                    </div>    
                 </Card>
             </Grid>
         </Container>
