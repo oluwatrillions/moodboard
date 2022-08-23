@@ -2,13 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { Container, Card, Grid, Button } from '@material-ui/core'
 import {styled} from '@material-ui/core/styles'
 import axios from 'axios'
-import { useParams} from 'react-router-dom'
+import { Link, useNavigate, useParams} from 'react-router-dom'
 import './SingleUserPost.css'
+
 const SingleUserPost = () => {
     
-    let {id} = useParams()
+    let { id } = useParams()
+    const navigate = useNavigate()
 
     const [feed, setFeed] = useState([])
+    const [editTitle, setEditTitle] = useState('')
+    const [editMood, setEditMood] = useState('')
 
     useEffect(() => {
         const getSinglePosts = async () => {
@@ -34,6 +38,31 @@ const SingleUserPost = () => {
         padding: '.5em 1.5em',
         cursor: 'pointer'
     })
+
+    const deletePost = async () => {
+        await axios.delete(`http://localhost:4000/post/${id}`)
+            .then((response) => {
+                setFeed(response.data)
+                navigate('/posts')
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    const editPost = async (id) => {
+        console.log(id);
+        try {
+            const updatedPost = await axios.put(`http://localhost:4000/post/${id}`, {
+            title: editTitle,
+            mood: editMood
+            })
+            setFeed(feed.map(post => feed.id === id ? { ...updatedPost.data } : feed))  
+            navigate(`/posts/editpost/${id}`)
+        } catch (error) {
+            console.log(error);   
+        }
+    }
     
 
     return (
@@ -50,8 +79,8 @@ const SingleUserPost = () => {
                                 <h4 className='mood-body'>{feed.mood}</h4>
                         </div>
                         <div className='btn-div'>
-                            <MyButton>Edit</MyButton>
-                            <MyButton>Delete</MyButton>
+                            <MyButton onClick={()=> navigate(`/posts/editpost/${id}`)}>Edit</MyButton>
+                            <MyButton onClick={deletePost}>Delete</MyButton>
                         </div>
                     </div>    
                 </Card>

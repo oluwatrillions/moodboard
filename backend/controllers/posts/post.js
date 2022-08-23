@@ -14,7 +14,7 @@ const createPost = async (req, res) => {
     }
 
     try {
-          const newPost = await Post.create({
+        const newPost = await Post.create({
         postedBy: req.body.postedBy,
         title: req.body.title,
         mood: req.body.mood,

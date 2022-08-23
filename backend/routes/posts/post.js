@@ -8,7 +8,7 @@ router.route('/')
 
 router.route('/:id')
     .get(postController.getOnePost)
-    .patch(postController.updatePost)
+    .put(postController.updatePost)
     .delete(postController.deletePost)
 
 module.exports = router;

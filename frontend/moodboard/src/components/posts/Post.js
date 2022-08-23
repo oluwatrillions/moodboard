@@ -2,10 +2,13 @@ import React, { useState, useEffect, useRef } from 'react'
 import {Container, Typography} from '@material-ui/core'
 import './Post.css'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Post = () => {
 
-const errRef = useRef()
+    const navigate = useNavigate()
+
+    const errRef = useRef()
 
     const [name, setName] = useState()
     const [title, setTitle] = useState()
@@ -31,15 +34,10 @@ const errRef = useRef()
                 setName('')
                 setTitle('')
                 setMood('')
+                navigate('/posts')
             })
         } catch (error) {
-            if (error.response.status === 400) {
-                setErrMsg('Bad Request. Please try again')
-            } else if (error.response.status === 500) {
-                setErrMsg('Internal Error')
-            } else {
-                setErrMsg('Server is down');
-            }
+           console.log(error);
         }
     }
     

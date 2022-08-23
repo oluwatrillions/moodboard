@@ -8,6 +8,7 @@ import Post from './components/posts/Post';
 import Layout from './components/Layout';
 import SingleUser from './components/users/SingleUser'
 import SingleUserPost from './components/users/SingleUserPost'
+import EditPost from './components/posts/EditPost';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                         <Route path='post/:id' element={<SingleUserPost />} />
                         <Route path='/posts' element={<Posts />} />
                         <Route path='/moodboard/user/:id' element={<SingleUser />} />
+                        <Route path='/posts/editpost/:id' element={<EditPost />} />
                   </Route>
                   <Route index element={<SignUp/>} />
                   <Route path='/login' element={<Login />} />

@@ -37,11 +37,12 @@ const Posts = () => {
                                 xs={6}
                                 md={2}
                                 className='outlook'
+                                key={allMoods._id}
                                 onClick={() => navigate(`/post/${allMoods.postId}`)}>
                                 <div>
                                     {
                                         !postpage ?
-                                            <Card key={allMoods._id}
+                                            <Card
                                                 onClick={() => {
                                                     setPostpage(true)
                                         }}>
