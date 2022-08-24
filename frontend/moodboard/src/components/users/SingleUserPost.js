@@ -50,19 +50,19 @@ const SingleUserPost = () => {
             })
     }
 
-    const editPost = async (id) => {
-        console.log(id);
-        try {
-            const updatedPost = await axios.put(`http://localhost:4000/post/${id}`, {
-            title: editTitle,
-            mood: editMood
-            })
-            setFeed(feed.map(post => feed.id === id ? { ...updatedPost.data } : feed))  
-            navigate(`/posts/editpost/${id}`)
-        } catch (error) {
-            console.log(error);   
-        }
-    }
+    // const editPost = async (id) => {
+    //     console.log(id);
+    //     try {
+    //         const updatedPost = await axios.put(`http://localhost:4000/post/${id}`, {
+    //         title: editTitle,
+    //         mood: editMood
+    //         })
+    //         setFeed(feed.map(post => feed.id === id ? { ...updatedPost.data } : feed))  
+    //         navigate(`/posts/editpost/${id}`)
+    //     } catch (error) {
+    //         console.log(error);   
+    //     }
+    // }
     
 
     return (
