@@ -21,7 +21,7 @@ function App() {
                         <Route path='post/:id' element={<SingleUserPost />} />
                         <Route path='/posts' element={<Posts />} />
                         <Route path='/moodboard/user/:id' element={<SingleUser />} />
-                        <Route path='/posts/editpost/:id' element={<EditPost />} />
+                        <Route path='/post/editpost/:id' element={<EditPost />} />
                   </Route>
                   <Route index element={<SignUp/>} />
                   <Route path='/login' element={<Login />} />

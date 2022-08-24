@@ -27,7 +27,7 @@ const SingleUserPost = () => {
         };
         getSinglePosts();
 
-    }, [feed])
+    }, [id, feed])
 
     const MyButton = styled(Button)({
         background: 'rgb(53, 66, 66)',
@@ -57,8 +57,8 @@ const SingleUserPost = () => {
     //         title: editTitle,
     //         mood: editMood
     //         })
-    //         setFeed(feed.map(post => feed.id === id ? { ...updatedPost.data } : feed))  
-    //         navigate(`/posts/editpost/${id}`)
+    //         setFeed(feed.map(post => post.id === id ? { ...updatedPost.data } : feed))  
+    //         navigate(`/post/editpost/${id}`)
     //     } catch (error) {
     //         console.log(error);   
     //     }
@@ -79,7 +79,7 @@ const SingleUserPost = () => {
                                 <h4 className='mood-body'>{feed.mood}</h4>
                         </div>
                         <div className='btn-div'>
-                            <MyButton onClick={()=> navigate(`/posts/editpost/${id}`)}>Edit</MyButton>
+                            <MyButton onClick={() => navigate(`/post/editpost/${id}`)}>Edit</MyButton>
                             <MyButton onClick={deletePost}>Delete</MyButton>
                         </div>
                     </div>    

@@ -24,7 +24,7 @@ const Post = () => {
     const postBtn = async (e) => {
         e.preventDefault();
         try {
-            const Post = await axios.post('http://localhost:4000/post', {
+            await axios.post('http://localhost:4000/post', {
                 postedBy: name,
                 title: title,
                 mood: mood,
