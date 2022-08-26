@@ -8,8 +8,8 @@ const EditPost = ({editPost, feed, editMood, setEditMood, editTitle, setEditTitl
     const { id } = useParams()
     const navigate = useNavigate()
 
-    // const post = feed.find(post => post.id.toString() === id)
-    // console.log(post);
+    const post = feed.find(post => post.postId.toString() === id)
+    console.log(post);
 
     const [editedTitle, setEditedTitle] = useState([])
     const [editedMood, setEditedMood] = useState([])
@@ -44,10 +44,10 @@ const EditPost = ({editPost, feed, editMood, setEditMood, editTitle, setEditTitl
                           <Typography variant='h5' ref={errRef} className={errMsg ? 'errMessage' : 'noErrMessage'}>{errMsg.current}</Typography>
                       
                           <form >
-                              <label htmlFor='title'></label>
+                              <label htmlFor='title'>Title</label>
                               <input type='text' name='title' value={editedTitle} onChange={(e) => (setEditedTitle(e.target.value))} />
                           
-                              <label htmlFor='mood'></label>
+                              <label htmlFor='mood'>Mood</label>
                               <textarea name='name' rows={4} value={editedMood} onChange={(e) => (setEditedMood(e.target.value))}>{feed}</textarea>
                           
                               <button className='btn' onClick={editedPost}>UPDATE</button>

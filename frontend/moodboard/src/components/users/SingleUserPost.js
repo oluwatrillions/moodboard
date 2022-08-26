@@ -50,19 +50,19 @@ const SingleUserPost = () => {
             })
     }
 
-    // const editPost = async (id) => {
-    //     console.log(id);
-    //     try {
-    //         const updatedPost = await axios.put(`http://localhost:4000/post/${id}`, {
-    //         title: editTitle,
-    //         mood: editMood
-    //         })
-    //         setFeed(feed.map(post => post.id === id ? { ...updatedPost.data } : feed))  
-    //         navigate(`/post/editpost/${id}`)
-    //     } catch (error) {
-    //         console.log(error);   
-    //     }
-    // }
+    const editPost = async () => {
+            const updatedPost = await axios.patch(`http://localhost:4000/post/${id}`, {
+            title: editTitle,
+            mood: editMood
+            }).then((response) => {
+                console.log(id);
+                setFeed(feed.map(post => post.postId === id))
+                navigate(`/post/editpost/${id}`)
+                console.log('hello')
+            }).catch((err) => {
+                console.log(err);
+            })
+    }
     
 
     return (
@@ -79,7 +79,7 @@ const SingleUserPost = () => {
                                 <h4 className='mood-body'>{feed.mood}</h4>
                         </div>
                         <div className='btn-div'>
-                            <MyButton onClick={() => navigate(`/post/editpost/${id}`)}>Edit</MyButton>
+                            <MyButton onClick={editPost}>Edit</MyButton>
                             <MyButton onClick={deletePost}>Delete</MyButton>
                         </div>
                     </div>    
