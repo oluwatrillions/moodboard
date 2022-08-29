@@ -13,7 +13,7 @@ const ConnectDB = require('./models/DBConnect')
 ConnectDB();
 
 app.use(express.urlencoded({ extended: false }))
-app.use(express.json())
+app.use(express.json())  
 app.use(cookieParser())
 app.use(credentials)
 app.use(cors(corsOptions))
