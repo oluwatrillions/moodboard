@@ -8,11 +8,9 @@ const EditPost = ({editPost, feed, editMood, setEditMood, editTitle, setEditTitl
     const { id } = useParams()
     const navigate = useNavigate()
 
-    const post = feed.find(post => post.postId.toString() === id)
-    console.log(post);
+    // const post = feed.find(post => post.postId.toString() === id)
+    // console.log(post);
 
-    const [editedTitle, setEditedTitle] = useState([])
-    const [editedMood, setEditedMood] = useState([])
     const [moods, setMoods] = useState('')
 
     const errMsg = useRef()
@@ -28,8 +26,8 @@ const EditPost = ({editPost, feed, editMood, setEditMood, editTitle, setEditTitl
     const editedPost = async () => {
         await axios.put(`http://localhost:4000/post/${id}`, {
         }).then((response) => {
-            setEditedMood(response.data.mood)
-            setEditedTitle(response.data.title)
+            setEditMood(response.data.mood)
+            setEditTitle(response.data.title)
         }).catch((err) => {
           console.log(err);
       })
@@ -43,14 +41,14 @@ const EditPost = ({editPost, feed, editMood, setEditMood, editTitle, setEditTitl
                           <Typography variant='h4' className='mood-heading'>What's your mood like today?</Typography>
                           <Typography variant='h5' ref={errRef} className={errMsg ? 'errMessage' : 'noErrMessage'}>{errMsg.current}</Typography>
                       
-                          <form >
+                          <form onClick={(e) => e.preventDefault()}>
                               <label htmlFor='title'>Title</label>
-                              <input type='text' name='title' value={editedTitle} onChange={(e) => (setEditedTitle(e.target.value))} />
+                              <input type='text' name='title' value={editTitle} onChange={(e) => (setEditTitle(e.target.value))} />
                           
                               <label htmlFor='mood'>Mood</label>
-                              <textarea name='name' rows={4} value={editedMood} onChange={(e) => (setEditedMood(e.target.value))}>{feed}</textarea>
+                              <textarea name='name' rows={4} value={editMood} onChange={(e) => (setEditMood(e.target.value))}>{feed}</textarea>
                           
-                              <button className='btn' onClick={editedPost}>UPDATE</button>
+                              <button className='btn' onClick={editPost}>UPDATE</button>
                           </form>
                       </section>
                   </Container>
