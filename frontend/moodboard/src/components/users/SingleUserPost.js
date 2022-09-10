@@ -5,9 +5,9 @@ import axios from 'axios'
 import { Link, useNavigate, useParams} from 'react-router-dom'
 import './SingleUserPost.css'
 
-const SingleUserPost = () => {
+const SingleUserPost = (props) => {
     
-    let { id } = useParams()
+    const { id } = useParams()
     const navigate = useNavigate()
 
     const [feed, setFeed] = useState([])
@@ -50,7 +50,7 @@ const SingleUserPost = () => {
             })
     }
 
-    const editPost = async () => {
+    const editPost = async (id) => {
             const updatedPost = await axios.put(`http://localhost:4000/post/${id}`, {
             title: editTitle,
             mood: editMood
@@ -79,7 +79,7 @@ const SingleUserPost = () => {
                                 <h4 className='mood-body'>{feed.mood}</h4>
                         </div>
                         <div className='btn-div'>
-                            <MyButton onClick={()=>{navigate(`/post/editpost/${id}`)}}>Edit</MyButton>
+                            <MyButton onClick={(id)=>{navigate(`/post/editpost/${feed.postId}`)}}>Edit</MyButton>
                             <MyButton onClick={deletePost}>Delete</MyButton>
                         </div>
                     </div>    
