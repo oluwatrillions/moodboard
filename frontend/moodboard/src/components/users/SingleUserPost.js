@@ -79,7 +79,7 @@ const SingleUserPost = (props) => {
                                 <h4 className='mood-body'>{feed.mood}</h4>
                         </div>
                         <div className='btn-div'>
-                            <MyButton onClick={(id)=>{navigate(`/post/editpost/${feed.postId}`)}}>Edit</MyButton>
+                            <MyButton onClick={()=>{navigate(`/post/editpost/${feed.postId}`)}}>Edit</MyButton>
                             <MyButton onClick={deletePost}>Delete</MyButton>
                         </div>
                     </div>    

@@ -18,9 +18,9 @@ function App() {
               <Routes>
                   <Route path='/' element={<Layout />}>
                         <Route path='/post' element={<Post />} />
-                        <Route path='post/:id' element={<SingleUserPost />} />
+                      <Route path='post/:id' element={<SingleUserPost />} />
                         <Route path='/posts' element={<Posts />} />
-                        <Route path='/moodboard/user/:id' element={<SingleUser />} />
+                        <Route path='/moodboard/user/:id' element={<SingleUser  />} />
                         <Route path='/post/editpost/:id' element={<EditPost />} />
                   </Route>
                   <Route index element={<SignUp/>} />

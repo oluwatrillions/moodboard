@@ -12,6 +12,8 @@ const EditPost = ({editPost, feed, editMood, setEditMood, editTitle, setEditTitl
     // console.log(post);
 
     const [moods, setMoods] = useState('')
+    const [editedTitle, setEditedTitle] = useState('')
+    const [editedMood, setEditedMood] = useState('')
 
     const errMsg = useRef()
     const errRef = useRef()
@@ -26,8 +28,8 @@ const EditPost = ({editPost, feed, editMood, setEditMood, editTitle, setEditTitl
     const editedPost = async () => {
         await axios.put(`http://localhost:4000/post/${id}`, {
         }).then((response) => {
-            setEditMood(response.data.mood)
-            setEditTitle(response.data.title)
+            setEditedMood(response.data.mood)
+            setEditedTitle(response.data.title)
         }).catch((err) => {
           console.log(err);
       })
@@ -43,12 +45,12 @@ const EditPost = ({editPost, feed, editMood, setEditMood, editTitle, setEditTitl
                       
                           <form onClick={(e) => e.preventDefault()}>
                               <label htmlFor='title'>Title</label>
-                              <input type='text' name='title' value={editTitle} onChange={(e) => (setEditTitle(e.target.value))} />
+                              <input type='text' name='title' value={editedTitle} onChange={(e) => (setEditedTitle(e.target.value))} />
                           
                               <label htmlFor='mood'>Mood</label>
-                              <textarea name='name' rows={4} value={editMood} onChange={(e) => (setEditMood(e.target.value))}>{feed}</textarea>
+                              <textarea name='name' rows={4} value={editedMood} onChange={(e) => (setEditedMood(e.target.value))}>{editedMood}</textarea>
                           
-                              <button className='btn' onClick={editPost}>UPDATE</button>
+                              <button className='btn' onClick={editedPost}>UPDATE</button>
                           </form>
                       </section>
                   </Container>
