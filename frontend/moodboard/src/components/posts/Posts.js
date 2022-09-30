@@ -37,7 +37,7 @@ const Posts = () => {
                                 xs={6}
                                 md={2}
                                 className='outlook'
-                                key={allMoods._id}
+                                key={allMoods.postId}
                                 onClick={() => navigate(`/post/${allMoods.postId}`)}>
                                 <div>
                                     {
@@ -60,7 +60,8 @@ const Posts = () => {
                                             postId={allMoods.postId}
                                             name={allMoods.name}
                                             title={allMoods.title}
-                                            mood={allMoods.mood} />
+                                            mood={allMoods.mood}
+                                            posts={allMoods} />
                                     }
                                 </div>
                             </Grid>
